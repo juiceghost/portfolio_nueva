@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,46 +9,34 @@ import {
 
 import Home from './Home';
 import About from './About';
-const AppStyles = styled.div`
-  &>h1 {
-    color: teal;
-  }
+import Header from './Header';
+
+
+const AppStyles = createGlobalStyle`
+@import url(‘https://fonts.googleapis.com/css?family=Nunito|Roboto');
+
 * {
   margin: 0;
   padding: 0;
 }
-
+body {
+    padding: 0;
+    margin: 0;
+    font-family: Nunito, Roboto, sans-serif;
+  }
 
 `
 
 function App() {
   return (
-    <AppStyles>
-      <h1>Kristian Kjeldsen</h1>
-      <p>Here shall come forth, the most glorious portfolio ever!</p>
+    <>
+      <AppStyles />
       <Router>
+        <Header />
+        <hr />
+        <p>Here shall come forth, the most glorious portfolio ever!</p>
         <div>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-          </ul>
 
-          <hr />
-
-          {/*
-          A <Switch> looks through all its children <Route>
-          elements and renders the first one whose path
-          matches the current URL. Use a <Switch> any time
-          you have multiple routes, but you want only one
-          of them to render at a time
-        */}
           <Switch>
             <Route exact path="/">
               <Home />
@@ -61,7 +50,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    </AppStyles>
+    </>
   );
 }
 
