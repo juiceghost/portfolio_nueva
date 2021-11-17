@@ -2,7 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import {
   BrowserRouter as Router,
-  Switch,
+  Routes,
   Route,
   Link
 } from "react-router-dom";
@@ -37,17 +37,11 @@ function App() {
         <p>Here shall come forth, the most glorious portfolio ever!</p>
         <div>
 
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/about">
-              <About />
-            </Route>
-            <Route path="/dashboard">
-              <About />
-            </Route>
-          </Switch>
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/" element={<About />}/>
+            <Route path="/" element={<About />}/>
+          </Routes>
         </div>
       </Router>
     </>
